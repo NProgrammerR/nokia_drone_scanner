@@ -417,7 +417,7 @@ const video = (() => {
   const status = $('#video-status');
   const W = canvas.width; const H = canvas.height;
   const noise = document.createElement('canvas');
-  noise.width = 160; noise.height = 90;
+  noise.width = 320; noise.height = 180; // fine-grained snow, still crisp in full screen
   const nctx = noise.getContext('2d');
   const nimg = nctx.createImageData(noise.width, noise.height);
   const scenery = Array.from({ length: 70 }, () => ({
@@ -622,4 +622,17 @@ const video = (() => {
   sel.addEventListener('change', () => useDevice(sel.value));
   $('#btn-capture').addEventListener('click', listDevices);
   $('#btn-snap').addEventListener('click', snapshot);
+
+  // full screen: the whole video box (canvas or capture <video>) incl. static + telemetry overlay
+  const box = $('.video-box');
+  const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+  function toggleFullscreen() {
+    if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    else (box.requestFullscreen || box.webkitRequestFullscreen).call(box);
+  }
+  $('#btn-full').addEventListener('click', toggleFullscreen);
+  box.addEventListener('dblclick', toggleFullscreen);
+  const onFs = () => { $('#btn-full').textContent = fsElement() ? '✕ Exit full screen' : '⛶ Full screen'; };
+  document.addEventListener('fullscreenchange', onFs);
+  document.addEventListener('webkitfullscreenchange', onFs);
 })();

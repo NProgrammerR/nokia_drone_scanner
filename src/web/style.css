@@ -207,3 +207,7 @@ input, select {
 }
 .credits { color: var(--muted); font-size: 11px; }
 .credits:hover { color: var(--accent); }
+.video-box { cursor: zoom-in; }
+.video-box:fullscreen { aspect-ratio: auto; width: 100vw; height: 100vh; border-radius: 0; cursor: zoom-out; }
+.video-box:fullscreen canvas, .video-box:fullscreen video { object-fit: contain; }
+.video-box:-webkit-full-screen { aspect-ratio: auto; width: 100vw; height: 100vh; border-radius: 0; }
