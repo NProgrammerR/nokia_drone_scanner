@@ -2,7 +2,7 @@
 
 Team project for the **Nokia Student Network Challenge 2026** (Defense track, with an AI angle).
 
-> Team name: _TBD_
+> Team name: _Kef10_
 
 ## The problem
 Drones are cheap, everywhere, and increasingly a security threat: drone strikes in Haiti have killed
