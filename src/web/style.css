@@ -205,3 +205,5 @@ input, select {
   .panel { overflow: visible; border: 0; }
   .stats { margin-left: 0; }
 }
+.credits { color: var(--muted); font-size: 11px; }
+.credits:hover { color: var(--accent); }
