@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drone Scanner Console</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">◎</span> Drone Scanner <span class="tag" id="mode">…</span></div>
+    <div class="stats">
+      <div class="stat"><span id="stat-drones">0</span><label>drones</label></div>
+      <div class="stat"><span id="stat-inzone">0</span><label>in risk zones</label></div>
+      <div class="stat"><span id="stat-alerts">0</span><label>open alerts</label></div>
+    </div>
+    <div class="actions">
+      <button id="btn-sound" class="btn">🔊 Sound on</button>
+      <button id="btn-notify" class="btn">🔔 Desktop alerts</button>
+      <span id="conn" class="conn">connecting…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel left">
+      <section class="card">
+        <h2>Detected drones</h2>
+        <ul id="drone-list" class="list"></ul>
+      </section>
+      <section class="card">
+        <h2>Details</h2>
+        <div id="detail" class="detail"></div>
+      </section>
+      <section class="card">
+        <h2>Risk zones</h2>
+        <ul id="zone-list" class="list"></ul>
+        <form id="zone-form" class="zone-form">
+          <input name="name" placeholder="New zone name" required maxlength="60">
+          <div class="row">
+            <label class="field">Radius (m)<input name="radius" type="number" min="10" max="20000" value="200" required></label>
+            <label class="field">Level<select name="level">
+              <option value="critical">Critical</option>
+              <option value="restricted">Restricted</option>
+            </select></label>
+          </div>
+          <button class="btn primary" type="submit">Place on map</button>
+        </form>
+      </section>
+    </aside>
+
+    <section class="map-wrap">
+      <div id="map"></div>
+      <div id="place-hint" class="place-hint" hidden>Click the map to place the zone · Esc to cancel</div>
+    </section>
+
+    <aside class="panel right">
+      <section class="card">
+        <div class="card-head">
+          <h2>Video feed</h2>
+          <select id="video-source" title="Video source">
+            <option value="sim">Intercepted (simulated)</option>
+          </select>
+        </div>
+        <div class="video-box">
+          <canvas id="video-canvas" width="640" height="360"></canvas>
+          <video id="video-el" autoplay muted playsinline hidden></video>
+        </div>
+        <div class="video-meta">
+          <span id="video-status" class="muted small">Scanning…</span>
+          <div class="btn-row">
+            <button id="btn-capture" class="btn small" title="RX5808 → USB video grabber shows up as a webcam">Use capture device</button>
+            <button id="btn-snap" class="btn small">Snapshot</button>
+          </div>
+        </div>
+      </section>
+      <section class="card grow">
+        <div class="card-head">
+          <h2>Alerts</h2>
+          <button id="btn-ack-all" class="btn small">Acknowledge all</button>
+        </div>
+        <ul id="alert-list" class="alerts"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
