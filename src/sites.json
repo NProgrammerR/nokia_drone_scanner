@@ -1,0 +1,46 @@
+[
+  {
+    "id": "turku-dockyard",
+    "name": "Turku dockyard (demo)",
+    "type": "port",
+    "lat": 60.4330,
+    "lon": 22.1030,
+    "perimeter_m": 1500,
+    "close_m": 500,
+    "authority": "Border Guard",
+    "network": "Port private 5G"
+  },
+  {
+    "id": "olkiluoto-npp",
+    "name": "Olkiluoto nuclear power plant (demo)",
+    "type": "nuclear",
+    "lat": 61.2366,
+    "lon": 21.4406,
+    "perimeter_m": 2500,
+    "close_m": 800,
+    "authority": "Police + Border Guard",
+    "network": "Site private 5G"
+  },
+  {
+    "id": "turku-airport",
+    "name": "Turku airport (demo)",
+    "type": "airport",
+    "lat": 60.5141,
+    "lon": 22.2628,
+    "perimeter_m": 2500,
+    "close_m": 900,
+    "authority": "Police + air traffic control",
+    "network": "Airport private 5G"
+  },
+  {
+    "id": "vip-helsinki",
+    "name": "VIP visit, Helsinki (demo)",
+    "type": "vip",
+    "lat": 60.1686,
+    "lon": 24.9564,
+    "perimeter_m": 1000,
+    "close_m": 300,
+    "authority": "Police VIP protection",
+    "network": "Public 5G (operator partner)"
+  }
+]

@@ -10,3 +10,4 @@ build/
 .idea/
 .vscode/
 *.log
+authority_alerts.jsonl

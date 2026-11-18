@@ -12,7 +12,8 @@
     <div class="brand"><span class="logo">◎</span> Drone Scanner <span class="tag" id="mode">…</span></div>
     <div class="stats">
       <div class="stat"><span id="stat-drones">0</span><label>drones</label></div>
-      <div class="stat"><span id="stat-inzone">0</span><label>in risk zones</label></div>
+      <div class="stat red"><span id="stat-red">0</span><label>RED</label></div>
+      <div class="stat yellow"><span id="stat-yellow">0</span><label>YELLOW</label></div>
       <div class="stat"><span id="stat-alerts">0</span><label>open alerts</label></div>
     </div>
     <div class="actions">
@@ -29,20 +30,38 @@
         <ul id="drone-list" class="list"></ul>
       </section>
       <section class="card">
-        <h2>Details</h2>
+        <h2>Risk agent analysis</h2>
         <div id="detail" class="detail"></div>
       </section>
       <section class="card">
-        <h2>Risk zones</h2>
-        <ul id="zone-list" class="list"></ul>
-        <form id="zone-form" class="zone-form">
-          <input name="name" placeholder="New zone name" required maxlength="60">
+        <h2>Flight permits</h2>
+        <ul id="permit-list" class="list"></ul>
+        <form id="permit-form" class="mini-form">
+          <input name="remote_id" placeholder="Drone Remote ID" required maxlength="64">
+          <input name="purpose" placeholder="Purpose (e.g. hull inspection)" maxlength="80">
           <div class="row">
-            <label class="field">Radius (m)<input name="radius" type="number" min="10" max="20000" value="200" required></label>
-            <label class="field">Level<select name="level">
-              <option value="critical">Critical</option>
-              <option value="restricted">Restricted</option>
+            <label class="field">Site<select name="site_id" id="permit-site"></select></label>
+            <label class="field">Valid (h)<input name="hours" type="number" min="0.1" max="720" step="0.1" value="2" required></label>
+          </div>
+          <button class="btn primary" type="submit">Add permit</button>
+        </form>
+      </section>
+      <section class="card">
+        <h2>Protected sites</h2>
+        <ul id="site-list" class="list"></ul>
+        <form id="site-form" class="mini-form">
+          <input name="name" placeholder="New site name" required maxlength="80">
+          <div class="row">
+            <label class="field">Type<select name="type">
+              <option value="port">Port</option><option value="airport">Airport</option>
+              <option value="nuclear">Nuclear plant</option><option value="energy">Energy</option>
+              <option value="vip">VIP protection</option><option value="other">Other</option>
             </select></label>
+            <label class="field">Authority<input name="authority" value="Border Guard" maxlength="80"></label>
+          </div>
+          <div class="row">
+            <label class="field">Perimeter (m)<input name="perimeter" type="number" min="50" max="50000" value="1500" required></label>
+            <label class="field">Close to target (m)<input name="close" type="number" min="10" max="49999" value="500" required></label>
           </div>
           <button class="btn primary" type="submit">Place on map</button>
         </form>
@@ -51,7 +70,14 @@
 
     <section class="map-wrap">
       <div id="map"></div>
-      <div id="place-hint" class="place-hint" hidden>Click the map to place the zone · Esc to cancel</div>
+      <div id="site-tabs" class="site-tabs"></div>
+      <div id="toasts" class="toasts"></div>
+      <div id="place-hint" class="place-hint" hidden>Click the map to place the site · Esc to cancel</div>
+      <div class="legend">
+        <div><span class="lv green">GREEN</span> Remote ID valid, edge of area, or permitted flight</div>
+        <div><span class="lv yellow">YELLOW</span> No Remote ID <b>or</b> close to target</div>
+        <div><span class="lv red">RED</span> No Remote ID <b>and</b> close to target → authorities alerted</div>
+      </div>
     </section>
 
     <aside class="panel right">
@@ -83,8 +109,6 @@
       </section>
     </aside>
   </main>
-
-  <div id="toasts" class="toasts"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>

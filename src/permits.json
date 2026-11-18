@@ -1,0 +1,38 @@
+[
+  {
+    "id": "P-2026-0142",
+    "remote_id": "1581F0000142",
+    "site_id": "turku-dockyard",
+    "holder": "Hull inspection contractor (demo)",
+    "purpose": "Ship hull inspection",
+    "valid_from": "2026-01-01T00:00:00",
+    "valid_to": "2026-12-31T23:59:59"
+  },
+  {
+    "id": "P-2026-0077",
+    "remote_id": "1581F0000077",
+    "site_id": "turku-dockyard",
+    "holder": "Local TV crew (demo)",
+    "purpose": "Media flight",
+    "valid_from": "2026-11-01T10:00:00",
+    "valid_to": "2026-11-01T12:00:00"
+  },
+  {
+    "id": "P-2026-0311",
+    "remote_id": "1581F0000311",
+    "site_id": "olkiluoto-npp",
+    "holder": "Plant security team (demo)",
+    "purpose": "Perimeter fence inspection",
+    "valid_from": "2026-01-01T00:00:00",
+    "valid_to": "2026-12-31T23:59:59"
+  },
+  {
+    "id": "P-2026-0405",
+    "remote_id": "1581F0000405",
+    "site_id": "turku-airport",
+    "holder": "Airport operator (demo)",
+    "purpose": "Runway lighting inspection",
+    "valid_from": "2026-01-01T00:00:00",
+    "valid_to": "2026-12-31T23:59:59"
+  }
+]
