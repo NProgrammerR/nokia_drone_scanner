@@ -211,3 +211,10 @@ input, select {
 .video-box:fullscreen { aspect-ratio: auto; width: 100vw; height: 100vh; border-radius: 0; cursor: zoom-out; }
 .video-box:fullscreen canvas, .video-box:fullscreen video { object-fit: contain; }
 .video-box:-webkit-full-screen { aspect-ratio: auto; width: 100vw; height: 100vh; border-radius: 0; }
+/* video meta: status + credits on one line, buttons on their own full-width row */
+.video-meta { flex-direction: column; align-items: stretch; gap: 8px; }
+.video-info { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; min-width: 0; }
+.video-info #video-status { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.video-info .credits { flex: none; }
+.video-btns { flex-wrap: wrap; }
+.video-btns .btn { flex: 1 1 auto; }
