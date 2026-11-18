@@ -111,6 +111,3 @@ A JSON array sends several detections at once.
 | `src/` | Prototype: `server.py` (backend, risk agent, simulator), `sites.json`, `permits.json`, `web/` (console) |
 | `prototype/` | Mock-ups, sketches, demo assets |
 | `pitch/` | Pitch deck and script (5 min) |
-
-## Team
--
